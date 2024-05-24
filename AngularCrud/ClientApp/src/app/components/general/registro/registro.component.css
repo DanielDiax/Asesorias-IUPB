@@ -1,0 +1,74 @@
+.content {
+    display: flex;
+    height: 100vh;
+    overflow: hidden; /* Evita que el contenido desborde la pantalla */
+  }
+  
+  .left-half {
+    width: 50%;
+    position: relative;
+    overflow: hidden; /* Evita que el video desborde la mitad izquierda */
+    
+  }
+  
+  .left-half video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .right-half {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #EFF3F8;
+  }
+  
+  .right-half h2 {
+    margin-bottom: 20px;
+  }
+
+  
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+  
+    .left-half,
+    .right-half {
+      width: 100%;
+    }
+  
+    .left-half video {
+      height: 50vh; /* Ajusta la altura del video en dispositivos pequeños */
+    }
+  }
+
+
+  /* Prime NG */
+
+  :host ::ng-deep .p-togglebutton.p-button.p-highlight {
+    background: #ced6f1;
+    border-color: #ced6f1;
+    color: #585858;
+    font-size: 0.875rem;
+    padding: 0.4375rem 0.65625rem;
+}
+
+:host ::ng-deep .p-togglebutton.p-button {
+    background: #ffffff;
+    border: 2px solid #e1e1e1;
+    color: #6c6c6c;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
+    font-size: 0.875rem;
+    padding: 0.4375rem 0.65625rem;
+}
+
+:host ::ng-deep .p-inputtext {
+  width: 100%;
+}

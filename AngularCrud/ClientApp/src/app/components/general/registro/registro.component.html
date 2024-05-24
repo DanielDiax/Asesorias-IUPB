@@ -1,0 +1,202 @@
+<div class="content">
+  <div class="left-half">
+    <video autoplay loop muted>
+      <source src="./assets/videos/PascualBravo.mp4" type="video/mp4" />
+      Tu navegador no admite el elemento de video.
+    </video>
+  </div>
+  <div class="right-half">
+    <p-card header="Formulario de registro" class="font-italic text-center">
+      <form [formGroup]="registroForm">
+        <div class="row">
+          <div class="col-6">
+            <span class="p-float-label text-xs">
+              <input
+                type="text"
+                class="p-inputtext-sm w-12"
+                pInputText
+                formControlName="nombre"
+              />
+              <label htmlFor="nombre">Nombre</label>
+              <small *ngIf="verErrorNombre" class="text-danger" id="nombre"
+                >Debe ingresar su nombre.</small
+              >
+            </span>
+          </div>
+          <div class="col-6">
+            <span class="p-float-label text-xs">
+              <input
+                type="text"
+                class="p-inputtext-sm w-12"
+                pInputText
+                formControlName="segNombre"
+              />
+              <label htmlFor="segNombre">Segundo Nombre</label>
+            </span>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-6">
+            <span class="p-float-label text-xs">
+              <input
+                type="text"
+                class="p-inputtext-sm w-12"
+                pInputText
+                formControlName="apellido"
+              />
+              <label htmlFor="apellido">Apellido</label>
+              <small *ngIf="verErrorApellido" class="text-danger" id="apellido"
+                >Debe ingresar su apellido.</small
+              >
+            </span>
+          </div>
+          <div class="col-6">
+            <span class="p-float-label text-xs">
+              <input
+                type="text"
+                class="p-inputtext-sm w-12"
+                pInputText
+                formControlName="segApellido"
+              />
+              <label htmlFor="segApellido">Segundo Apellido</label>
+            </span>
+          </div>
+        </div>
+
+        <div class="row mt-2">
+          <div class="col-6">
+            <span class="p-float-label text-xs">
+              <input
+                type="text"
+                class="p-inputtext-sm w-12"
+                pInputText
+                formControlName="dni"
+              />
+              <label htmlFor="dni">Documento Identidad</label>
+              <small *ngIf="verErrorDni" class="text-danger" id="dni"
+                >Debe ingresar su documento de identidad.</small
+              >
+            </span>
+          </div>
+          <div class="col-3">
+            <span class="p-float-label text-xs">
+              <input
+                type="text"
+                class="p-inputtext-sm w-12"
+                pInputText
+                formControlName="edad"
+              />
+              <label htmlFor="edad">Edad</label>
+              <small *ngIf="verErrorEdad" class="text-danger" id="dni"
+                >Debe ingresar su edad.</small
+              >
+            </span>
+          </div>
+          <div class="col-3">
+            <p-toggleButton
+              formControlName="perfil"
+              onLabel="Estudiante"
+              offLabel="Profesor"
+              styleClass="w-12 text-xs"
+            ></p-toggleButton>
+          </div>
+        </div>
+
+        <div class="row mt-2">
+          <div class="col-6">
+            <span class="p-float-label text-xs">
+              <input
+                type="text"
+                class="p-inputtext-sm w-12"
+                pInputText
+                formControlName="email"
+              />
+              <label htmlFor="email">Correo Electrónico</label>
+              <small *ngIf="verErrorEmail" class="text-danger" id="dni"
+                >Debe ingresar su correo electrónico.</small
+              >
+            </span>
+          </div>
+          <div class="col-6">
+            <span class="p-float-label text-xs">
+              <input
+                type="text"
+                class="p-inputtext-sm w-12"
+                pInputText
+                formControlName="validarEmail"
+              />
+              <label htmlFor="validarEmail">Confirme Correo Electrónico</label>
+              <small *ngIf="verErrorValidadorEmail" class="text-danger" id="dni"
+                >Debe validar su correo electrónico.</small
+              >
+            </span>
+          </div>
+        </div>
+
+        <div class="row mt-2">
+          <div class="col-6">
+            <span class="p-float-label text-xs w-12">
+              <p-password
+                [feedback]="true"
+                [weakLabel]="'Débil'"
+                [mediumLabel]="'Medio'"
+                [strongLabel]="'Fuerte'"
+                formControlName="contrasena"
+                [toggleMask]="true"
+                class="p-inputtext-sm w-full"
+                styleClass="p-inputtext-sm w-full"
+              ></p-password>
+              <label for="contrasena">Contraseña</label>
+              <small *ngIf="verErrorContrasena" class="text-danger" id="dni"
+                >Debe agregar su contraseña.</small
+              >
+            </span>
+          </div>
+          <div class="col-6">
+            <span class="p-float-label text-xs">
+              <p-password
+                [feedback]="true"
+                [weakLabel]="'Débil'"
+                [mediumLabel]="'Medio'"
+                [strongLabel]="'Fuerte'"
+                formControlName="validarContrasena"
+                [toggleMask]="true"
+                class="p-inputtext-sm w-full"
+                styleClass="p-inputtext-sm w-full"
+              ></p-password>
+              <label htmlFor="validarContrasena">Confirmar Contraseña</label>
+              <small
+                *ngIf="verErrorValidadorContrasena"
+                class="text-danger"
+                id="dni"
+                >Debe validar su contraseña.</small
+              >
+            </span>
+          </div>
+        </div>
+
+        <div class="row flex text-center mt-2">
+          <div class="col-6">
+            <p-button
+              icon="pi pi-check-square"
+              styleClass="p-button-success"
+              type="submit"
+              (onClick)="registrarUsuario()"
+              label="Registrarse"
+            ></p-button>
+          </div>
+          <div class="col-6">
+            <p-button
+              icon="pi pi-arrow-left"
+              styleClass="p-button-secundary"
+              (onClick)="redireccionar()"
+              label="Volver"
+            ></p-button>
+          </div>
+        </div>
+      </form>
+    </p-card>
+  </div>
+</div>
+
+<p-toast></p-toast>

@@ -1,0 +1,90 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <p-button
+        icon="pi pi-upload"
+        styleClass="p-button-rounded p-button-success"
+        label="Registrarse"
+        (onClick)="redireccionar()"
+      ></p-button>
+    </div>
+  </div>
+  <div
+    class="row"
+    style="display: flex; justify-content: center; align-items: center"
+  >
+    <img
+      src="../../../../assets/images/IUPB_Logo.jpg"
+      alt=""
+      style="width: 350px"
+    />
+  </div>
+
+  <div class="grid justify-content-center">
+    <div class="sm:col-12 md:col-6 lg:col-4">
+      <p-card class="text-center" styleClass="shadow-6" header="Login">
+        <div class="row">
+          <div class="col-12">
+            <span class="p-float-label w-full">
+              <input
+                type="email"
+                pInputText
+                class="p-inputtext-md text-md w-full"
+                required
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                [(ngModel)]="userEmail"
+              />
+
+              <label htmlFor="EmailUser">Correo Electrónico</label>
+              <small
+                *ngIf="viewEmailSmallText"
+                class="text-pink-800"
+                id="username-help"
+                >Debes ingresar tu correo electrónico.</small
+              >
+            </span>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-12">
+            <span class="p-float-label text-md w-12">
+              <p-password
+                [feedback]="true"
+                [weakLabel]="'Débil'"
+                [mediumLabel]="'Medio'"
+                [strongLabel]="'Fuerte'"
+                [(ngModel)]="passWord"
+                [toggleMask]="true"
+                class="p-inputtext-md w-12"
+                styleClass="p-inputtext-md w-12"
+              ></p-password>
+              <label for="contrasena">Contraseña</label>
+              <small *ngIf="viewPassWordSmallText" class="text-danger" id="dni"
+                >Debe ingresar su contraseña.</small
+              >
+            </span>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-12">
+            <p-button
+              (onClick)="login()"
+              icon="pi pi-sign-in"
+              label="Iniciar sesión"
+            ></p-button>
+          </div>
+        </div>
+        <div class="row">
+          <small
+            style="cursor: pointer"
+            class="text-blue-500 text-sm underline"
+            id="username-help"
+            >¿Has olvidado tu contraseña?</small
+          >
+        </div>
+      </p-card>
+    </div>
+  </div>
+</div>
+
+<p-toast></p-toast>
