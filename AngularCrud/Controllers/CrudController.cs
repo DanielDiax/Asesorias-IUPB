@@ -106,5 +106,47 @@ namespace AngularCrud.Controllers
                 return BadRequest();
             }
         }
+
+        [HttpGet("[action]/{perfil}/{asignatura}/{idAsignatura}")]
+        public IActionResult GuardarAsignatura(int perfil, string asignatura, int idAsignatura)
+        {
+            try
+            {
+                var response = crudServices.GuardarAsignatura(perfil, asignatura, idAsignatura);
+                return Ok(response);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpGet("[action]")]
+        public IActionResult ConsultarAsignaturas()
+        {
+            try
+            {
+                var response = crudServices.ConsultarAsignaturas();
+                return Ok(response);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpGet("[action]/{idAsignatura}")]
+        public IActionResult EliminarAsignatura(int idAsignatura)
+        {
+            try
+            {
+                var response = crudServices.EliminarAsignatura(idAsignatura);
+                return Ok(response);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
     }
 }

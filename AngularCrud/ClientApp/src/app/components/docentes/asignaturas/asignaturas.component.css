@@ -1,0 +1,23 @@
+:host ::ng-deep .p-float-label {
+    width: 93%;
+    margin-right: 7%;
+}
+
+:host ::ng-deep .p-button.p-button-sm {
+    font-size: 0.7rem;
+    padding: 0.05rem 0.05rem;
+}
+
+:host ::ng-deep .p-inputtext {
+    padding: 0.5rem 0.4rem;
+    width: 94%;
+}
+
+:host ::ng-deep .p-button {
+    padding: 0.5rem 0.4rem;
+}
+
+
+:host ::ng-deep .p-datepicker {
+    transform: scale(0.7);
+}

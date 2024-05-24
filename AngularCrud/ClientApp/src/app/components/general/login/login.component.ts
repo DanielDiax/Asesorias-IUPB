@@ -76,10 +76,10 @@ export class LoginComponent implements OnInit {
             );
 
             setTimeout(() => {
-              if ((response[0].perfil = 1)) {
+              if (response[0].perfil == 1) {
                 location.href = 'estudiantes/home';
               } else {
-                location.href = '';
+                location.href = 'docentes/home';
               }
             }, 500);
           } else {

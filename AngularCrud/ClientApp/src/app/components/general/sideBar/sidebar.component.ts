@@ -1,4 +1,6 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { IDatosUsuarioModel } from 'src/app/interfaces/generalInterfaces';
+import { LocalStorageService } from 'src/app/services/localStorage.service';
 
 @Component({
   selector: 'app-nav-menu',
@@ -6,10 +8,30 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
   styleUrls: ['./sidebar.component.css'],
 })
 export class SideBarComponent implements OnInit {
-  constructor(private renderer: Renderer2) {}
+  datosUsuario: IDatosUsuarioModel;
+
+  //booleanos
+  perfilEstudiante: boolean = false;
+  perfilDocente: boolean = false;
+
+  constructor(
+    private renderer: Renderer2,
+    private localStorageServices: LocalStorageService
+  ) {}
 
   ngOnInit(): void {
-    this.loadScript('assets/javascript/javascript.js');
+    try {
+      this.loadScript('assets/javascript/javascript.js');
+
+      this.datosUsuario = this.localStorageServices.getLocalStorage();
+      console.log(this.datosUsuario);
+    } catch (error) {
+      console.error(new Error(error));
+    } finally {
+      setTimeout(() => {
+        this.validarPerfil();
+      }, 500);
+    }
   }
 
   loadScript(src: string): void {
@@ -24,6 +46,16 @@ export class SideBarComponent implements OnInit {
       console.error(`Error loading script ${src}.`);
     };
     this.renderer.appendChild(document.body, script);
+  }
+
+  validarPerfil() {
+    if (this.datosUsuario.perfil == 1) {
+      this.perfilEstudiante = true;
+      this.perfilDocente = false;
+    } else {
+      this.perfilEstudiante = false;
+      this.perfilDocente = true;
+    }
   }
 
   logout() {

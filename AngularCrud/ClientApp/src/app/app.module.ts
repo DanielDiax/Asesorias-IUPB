@@ -26,6 +26,8 @@ import { PasswordModule } from 'primeng/password';
 import { TableModule } from 'primeng/table';
 import { AgendamientosComponent } from './components/estudiantes/agendamientos/agendamientos.component';
 import { MisCitasComponent } from './components/estudiantes/misCitas/mis-citas.component';
+import { homeDocenteComponent } from './components/docentes/home/home-docente.component';
+import { AsignaturasComponent } from './components/docentes/asignaturas/asignaturas.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { MisCitasComponent } from './components/estudiantes/misCitas/mis-citas.c
     SideBarComponent,
     AgendamientosComponent,
     MisCitasComponent,
+    homeDocenteComponent,
+    AsignaturasComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -59,6 +63,8 @@ import { MisCitasComponent } from './components/estudiantes/misCitas/mis-citas.c
       { path: 'estudiantes/home', component: HomeEstudiantesComponent },
       { path: 'estudiantes/agendamientos', component: AgendamientosComponent },
       { path: 'estudiantes/mis-citas', component: MisCitasComponent },
+      { path: 'docentes/home', component: homeDocenteComponent },
+      { path: 'docentes/asignatura', component: AsignaturasComponent },
     ]),
   ],
   providers: [],

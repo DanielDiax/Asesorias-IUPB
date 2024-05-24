@@ -17,34 +17,34 @@
         <input type="text" placeholder="Search..." />
         <span class="tooltip">Search</span>
       </li> -->
-      <li>
+      <li *ngIf="perfilEstudiante">
         <a href="estudiantes/agendamientos">
           <i class="bx bxs-calendar"></i>
           <span class="links_name">Agendamientos</span>
         </a>
         <span class="tooltip">Agendamientos</span>
       </li>
-      <li>
+      <li *ngIf="perfilEstudiante">
         <a href="estudiantes/mis-citas">
           <i class="bx bx-list-ul"></i>
           <span class="links_name">Mis Citas</span>
         </a>
         <span class="tooltip">Mis Citas</span>
       </li>
-      <li>
-        <a href="#">
+      <li *ngIf="perfilEstudiante">
+        <a href="estudiantes/mis-citas">
           <i class="bx bx-user"></i>
           <span class="links_name">User</span>
         </a>
         <span class="tooltip">User</span>
       </li>
 
-      <li>
-        <a href="#">
-          <i class="bx bx-cog"></i>
-          <span class="links_name">Setting</span>
+      <li *ngIf="perfilDocente">
+        <a href="docentes/asignatura">
+          <i class="bx bx-book-alt"></i>
+          <span class="links_name">Asignaturas</span>
         </a>
-        <span class="tooltip">Setting</span>
+        <span class="tooltip">Asignaturas</span>
       </li>
       <li class="profile" (click)="logout()" style="cursor: pointer">
         <div class="profile-details">

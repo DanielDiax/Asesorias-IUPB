@@ -105,6 +105,12 @@ namespace AngularCrud.Services
             return response;
         }
 
+
+        /// <summary>
+        /// Este servicio elimina las citas que los estudiantes ya han tomado anteriormente 
+        /// </summary>
+        /// <param name="idCita"></param>
+        /// <returns></returns>
         public string EliminarCita(int idCita)
         {
             try
@@ -123,6 +129,49 @@ namespace AngularCrud.Services
                 return $"Error al eliminar la cita: {ex}";
             }
             
+        }
+        /// <summary>
+        /// Crea las asignaturas que los profesores van a dar en sus asesorias
+        /// </summary>
+        /// <param name="perfil"></param>
+        /// <param name="asignatura"></param>
+        /// <returns></returns>
+        public string GuardarAsignatura(int perfil, string asignatura, int idAsignatura)
+        {
+            var parameter = new DynamicParameters();
+            parameter.Add("@Accion", "CrearAsignatura");
+            parameter.Add("@Perfil", perfil);
+            parameter.Add("@asignatura", asignatura);
+            parameter.Add("@IdAsignatura", idAsignatura);
+
+            var response = _localServer.Get<string>($"Sp_AsesoriasPascualBravo", parameter, commandType: CommandType.StoredProcedure);
+
+            return response;
+        }
+
+        /// <summary>
+        /// Obtiene todas las asignaturas
+        /// </summary>
+        /// <returns></returns>
+        public List<AsignaturasModelView> ConsultarAsignaturas()
+        {
+            var parameter = new DynamicParameters();
+            parameter.Add("@Accion", "ConsultarAsignaturas");
+
+            var response = _localServer.GetAll<AsignaturasModelView>($"Sp_AsesoriasPascualBravo", parameter, commandType: CommandType.StoredProcedure);
+
+            return response;
+        }
+
+        public string EliminarAsignatura(int idAsignatura)
+        {
+            var parameter = new DynamicParameters();
+            parameter.Add("@Accion", "ElimiarAsignatura");
+            parameter.Add("@IdAsignatura", idAsignatura);
+
+            var response = _localServer.Get<string>($"Sp_AsesoriasPascualBravo", parameter, commandType: CommandType.StoredProcedure);
+
+            return response;
         }
     }
 }
