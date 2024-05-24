@@ -14,8 +14,8 @@
 
 ## Requisitos
 
-- .NET Core SDK 3.1 o superior
-- Node.js 12.x o superior
+- .NET Core SDK 7.0 o superior
+- Node.js 18.x o superior
 - SQL Server
 
 ## Instalación
