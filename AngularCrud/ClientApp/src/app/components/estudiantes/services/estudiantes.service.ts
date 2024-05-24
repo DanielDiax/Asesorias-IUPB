@@ -17,4 +17,11 @@ export class EstudiantesService {
       environment.url + 'Crud/AsesoriasDisponibles/'
     );
   }
+
+  crearCita(idAsesoria: number, idEstudiante: number) {
+    return this.http.get<string>(
+      environment.url + 'Crud/CrearCita/' + idAsesoria + '/' + idEstudiante,
+      { responseType: 'text' as 'json' }
+    );
+  }
 }

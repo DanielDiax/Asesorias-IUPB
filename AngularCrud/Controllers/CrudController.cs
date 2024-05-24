@@ -51,13 +51,26 @@ namespace AngularCrud.Controllers
             }
         }
 
-
         [HttpGet("[action]")]
         public IActionResult AsesoriasDisponibles()
         {
             try
             {
                 var response = crudServices.AsesoriasDisponibles();
+                return Ok(response);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpGet("[action]/{idAsesoria}/{idEstudiante}")]
+        public IActionResult CrearCita(int idAsesoria, int idEstudiante)
+        {
+            try
+            { 
+                var response = crudServices.CrearCita(idAsesoria, idEstudiante);
                 return Ok(response);
             }
             catch (Exception)

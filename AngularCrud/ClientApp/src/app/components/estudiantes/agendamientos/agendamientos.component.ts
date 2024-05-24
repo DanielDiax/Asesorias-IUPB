@@ -4,28 +4,32 @@ import { LocalStorageService } from '../../../services/localStorage.service';
 import { IDatosUsuarioModel } from 'src/app/interfaces/generalInterfaces';
 import { EstudiantesService } from '../services/estudiantes.service';
 import { IAsesoriasDisponibles } from '../interfaces/interfaces-estudiantes';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
-  selector: 'home-estudiantes-root',
-  templateUrl: './home-estudiantes.component.html',
-  styleUrls: ['./home-estudiantes.component.css'],
+  selector: 'agendamientos-root',
+  templateUrl: './agendamientos.component.html',
+  styleUrls: ['./agendamientos.component.css'],
   providers: [MessageService],
 })
-export class HomeEstudiantesComponent implements OnInit {
-  constructor(
-    private localStorageService: LocalStorageService,
-    private serviciosEstuduante: EstudiantesService,
-    private messageService: MessageService
-  ) {}
-
+export class AgendamientosComponent implements OnInit {
   //Variables
   nombreEstudiante: string;
 
   datosEstudiante: IDatosUsuarioModel;
   datosAsesorias: IAsesoriasDisponibles[] = [];
+  asesoriaSeleccionada: IAsesoriasDisponibles;
 
   //Booleanos
   verTablaAsesorias: boolean = false;
+  verBotonCrearCita: boolean = false;
+
+  constructor(
+    private localStorageService: LocalStorageService,
+    private serviciosEstuduante: EstudiantesService,
+    private estudiantesService: EstudiantesService,
+    private messageService: MessageService
+  ) {}
 
   ngOnInit(): void {
     this.datosEstudiante = this.localStorageService.getLocalStorage();
@@ -59,23 +63,51 @@ export class HomeEstudiantesComponent implements OnInit {
           this.datosEstudiante.apellido +
           ' ' +
           this.datosEstudiante.segApellido;
-        this.asesoriasDisponibles();
+        this.consultarAsesoriasDisponibles();
       } else {
         location.href = '';
       }
     }
   }
 
-  async asesoriasDisponibles() {
+  async consultarAsesoriasDisponibles() {
     try {
-      const respuesta: IAsesoriasDisponibles[] = await this.serviciosEstuduante
-        .asesoriasDisponibles()
-        .toPromise();
-      console.log(respuesta);
+      const respuesta: IAsesoriasDisponibles[] = await firstValueFrom(
+        this.serviciosEstuduante.asesoriasDisponibles()
+      );
 
       if (respuesta.length > 0) {
         this.datosAsesorias = respuesta;
         this.verTablaAsesorias = true;
+      }
+    } catch (error) {
+      console.error(new Error(error));
+    }
+  }
+
+  filaSeleccionada() {
+    this.verBotonCrearCita = true;
+  }
+
+  async crearCita() {
+    try {
+      let idAsesoria: number = this.asesoriaSeleccionada.idAsesoria;
+      let idEstudiante: number = this.datosEstudiante.idRows;
+      const response = await firstValueFrom(
+        this.estudiantesService.crearCita(idAsesoria, idEstudiante)
+      );
+      if (response == 'Se ha agendado la cita') {
+        this.messageService.add({
+          severity: 'success',
+          summary: '¡Muy bien!',
+          detail: response,
+        });
+      } else {
+        this.messageService.add({
+          severity: 'warn',
+          summary: '¡Espera!',
+          detail: response,
+        });
       }
     } catch (error) {
       console.error(new Error(error));

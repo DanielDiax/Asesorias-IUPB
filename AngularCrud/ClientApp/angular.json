@@ -35,7 +35,9 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+
+            ]
           },
           "configurations": {
             "production": {
@@ -134,7 +136,6 @@
       }
     }
   },
-  "defaultProject": "AngularCrud",
   "cli": {
     "analytics": "509eebc8-c969-438c-92d4-3460c14bc7ee"
   }

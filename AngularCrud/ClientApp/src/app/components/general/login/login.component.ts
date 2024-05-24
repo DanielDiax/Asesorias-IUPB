@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { IDatosUsuarioModel } from 'src/app/interfaces/generalInterfaces';
 import { GeneralService } from 'src/app/services/general.service';
@@ -10,7 +10,7 @@ import { LocalStorageService } from '../../../services/localStorage.service';
   styleUrls: ['./login.component.css'],
   providers: [MessageService],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   title = 'app';
   userEmail: string = '';
   passWord: string = '';
@@ -27,6 +27,19 @@ export class LoginComponent {
     private generalServices: GeneralService,
     private localStorageService: LocalStorageService
   ) {}
+  ngOnInit(): void {
+    try {
+      let datos = this.localStorageService.getLocalStorage();
+
+      if (datos.perfil == 1) {
+        location.href = 'estudiantes/home';
+      } else if (datos.perfil == 0) {
+        location.href = 'docentes/home';
+      }
+    } catch (error) {
+      console.error(new Error(error));
+    }
+  }
 
   login() {
     this.userEmail == '' ? (this.viewEmailSmallText = true) : false;

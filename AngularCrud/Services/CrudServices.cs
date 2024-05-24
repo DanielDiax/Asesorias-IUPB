@@ -70,5 +70,23 @@ namespace AngularCrud.Services
 
             return response;
         }
+
+        /// <summary>
+        /// Con este servicio guardamos la nueva cita del estudiante
+        /// </summary>
+        /// <param name="idAsesoria"></param>
+        /// <param name="idEstudiante"></param>
+        /// <returns></returns>
+        public string CrearCita(int idAsesoria,int idEstudiante)
+        {
+            var parameter = new DynamicParameters();
+            parameter.Add("@Accion", "CrearCita");
+            parameter.Add("@IdAsesoria", idAsesoria);
+            parameter.Add("@IdEstudiante", idEstudiante);
+
+            var response = _localServer.Get<string>($"Sp_AsesoriasPascualBravo", parameter, commandType: CommandType.StoredProcedure);
+
+            return response;
+        }
     }
 }

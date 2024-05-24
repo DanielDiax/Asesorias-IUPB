@@ -1,0 +1,56 @@
+<head>
+  <meta charset="UTF-8" />
+  <title>Responsive Sidebar Menu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+      <i class="bx bxl-angular"></i>
+      <div class="logo_name">Asesorias</div>
+      <i class="bx bx-menu" id="btn"></i>
+    </div>
+    <ul class="nav-list">
+      <!--       <li>
+        <i class="bx bx-search"></i>
+        <input type="text" placeholder="Search..." />
+        <span class="tooltip">Search</span>
+      </li> -->
+      <li>
+        <a href="estudiantes/agendamientos">
+          <i class="bx bxs-calendar"></i>
+          <span class="links_name">Agendamientos</span>
+        </a>
+        <span class="tooltip">Agendamientos</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class="bx bx-user"></i>
+          <span class="links_name">User</span>
+        </a>
+        <span class="tooltip">User</span>
+      </li>
+
+      <li>
+        <a href="#">
+          <i class="bx bx-cog"></i>
+          <span class="links_name">Setting</span>
+        </a>
+        <span class="tooltip">Setting</span>
+      </li>
+      <li class="profile" (click)="logout()" style="cursor: pointer">
+        <div class="profile-details">
+          <i class="bx bx-export"></i>
+          <div class="name_job">
+            <div class="name">Logout</div>
+          </div>
+        </div>
+        <i class="bx bx-log-out" id="log_out"></i>
+      </li>
+    </ul>
+  </div>
+  <section class="home-section">
+    <router-outlet></router-outlet>
+  </section>
+</body>

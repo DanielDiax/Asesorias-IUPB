@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/general/login/login.component';
 import { HomeEstudiantesComponent } from './components/estudiantes/home/home-estudiantes.component';
+import { SideBarComponent } from './components/general/sideBar/sidebar.component';
 
 //Prime Ng
 
@@ -23,6 +24,7 @@ import { CommonModule } from '@angular/common';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { PasswordModule } from 'primeng/password';
 import { TableModule } from 'primeng/table';
+import { AgendamientosComponent } from './components/estudiantes/agendamientos/agendamientos.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { TableModule } from 'primeng/table';
     LoginComponent,
     RegistroComponent,
     HomeEstudiantesComponent,
+    SideBarComponent,
+    AgendamientosComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -38,7 +42,6 @@ import { TableModule } from 'primeng/table';
     FormsModule,
     ReactiveFormsModule,
     FormsModule,
-    CommonModule,
     CardModule,
     ButtonModule,
     InputTextModule,
@@ -52,6 +55,7 @@ import { TableModule } from 'primeng/table';
       { path: '', component: LoginComponent },
       { path: 'registro', component: RegistroComponent },
       { path: 'estudiantes/home', component: HomeEstudiantesComponent },
+      { path: 'estudiantes/agendamientos', component: AgendamientosComponent },
     ]),
   ],
   providers: [],

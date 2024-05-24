@@ -11,7 +11,9 @@ import { LocalStorageService } from '../../../services/localStorage.service';
   styleUrls: ['./registro.component.css'],
   providers: [MessageService],
 })
-export class RegistroComponent {
+export class RegistroComponent implements OnInit {
+  datosUsuario: IDatosUsuarioModel;
+
   //Booleanos
   verErrorNombre: boolean = false;
   verErrorApellido: boolean = false;
@@ -46,6 +48,11 @@ export class RegistroComponent {
       validarContrasena: ['', [Validators.required]],
       perfil: [true],
     });
+  }
+  ngOnInit(): void {}
+
+  async consultarDatosUsuario() {
+    this.datosUsuario = await this.localStorageService.getLocalStorage();
   }
 
   //#region Funciones de guardado de usuarios

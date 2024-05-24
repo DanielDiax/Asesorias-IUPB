@@ -1,0 +1,69 @@
+<div class="container">
+  <br />
+  <p-card header="Estudiante" subheader="{{ nombreEstudiante }}">
+    <div class="col-12">
+      <p-table
+        [value]="datosAsesorias"
+        responsiveLayout="stack"
+        [breakpoint]="'960px'"
+        selectionMode="single"
+        [(selection)]="asesoriaSeleccionada"
+        (onRowSelect)="filaSeleccionada()"
+        dataKey="idAsesoria"
+        styleClass="p-datatable-sm text-sm p-datatable-striped"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th class="hidden">IdAsesoria</th>
+            <th>Fecha</th>
+            <th>Hora Inicio</th>
+            <th>Hora Fin</th>
+            <th>Nombre Docente</th>
+            <th>Apellido Docente</th>
+            <th>Asignatura</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-asesoria>
+          <tr [pSelectableRow]="asesoria">
+            <td class="hidden">{{ asesoria.idAsesoria }}</td>
+            <td>
+              <span class="p-column-title">Fecha Asesoria</span
+              >{{ asesoria.fechaAsesoria | date : "dd/MM/yyyy" }}
+            </td>
+            <td>
+              <span class="p-column-title">Hora Inicio</span>
+              {{ asesoria.horaInicio }}
+            </td>
+            <td>
+              <span class="p-column-title">Hora Fin</span>
+              {{ asesoria.horaFin }}
+            </td>
+            <td>
+              <span class="p-column-title">Nombre Docente</span>
+              {{ asesoria.nombre }}
+            </td>
+            <td>
+              <span class="p-column-title">Apellido Docente</span>
+              {{ asesoria.apellido }}
+            </td>
+            <td>
+              <span class="p-column-title">Asignatura</span>
+              {{ asesoria.asesoria }}
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+          <div class="flex align-items-center justify-content-between">
+            <p-button
+              *ngIf="verBotonCrearCita"
+              (onClick)="crearCita()"
+              label="Tomar Asesoria"
+            ></p-button>
+          </div>
+        </ng-template>
+      </p-table>
+    </div>
+  </p-card>
+</div>
+
+<p-toast></p-toast>
