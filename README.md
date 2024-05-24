@@ -2,7 +2,7 @@
 
 ## Descripción
 
-**Asesorias IUPB** es una aplicación web desarrollada para gestionar asesorías académicas en la Universidad Pascual Bravo. La aplicación está construida con .NET Core en el backend y Angular en el frontend, permitiendo a los usuarios realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre las asesorías.
+**Asesorias IUPB** es una aplicación web de prueba desarrollada para gestionar asesorías académicas en la Universidad Pascual Bravo. La aplicación está construida con .NET Core en el backend y Angular en el frontend, permitiendo a los usuarios realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre las asesorías.
 
 ## Características
 
