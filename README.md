@@ -16,18 +16,19 @@
 
 - .NET Core SDK 7.0 o superior
 - Node.js 18.x o superior
+- Angular CLI
 - SQL Server
 
 ## Instalación
 
-### Clonar el Repositorio
+## Clonar el Repositorio
 
 ```sh
 git clone https://github.com/DanielDiax/Asesorias-IUPB.git
 cd Asesorias-IUPB
 ```
 
-### Configuración del Backend
+## Configuración del Backend
 
 - **Navega al directorio del proyecto .NET:** cd AngularCrud
 - **Restaura las dependencias de NuGet:** dotnet restore
@@ -52,17 +53,17 @@ cd Asesorias-IUPB
 
 - **Inicia el proyecto desde visual studio 2022**
 
-###Configuración del Frontend
+## Configuración del Frontend
 
 - **Navega al directorio del frontend Angular:** cd ClientApp
 - **Instala las dependencias de npm:** npm install o puedes haceerlo con npm i
 - **Inicia la aplicación frontend:** ng serve -o, o puedes utilizar ng s -o
 
-###Uso de la App
+## Uso de la App
 
 - **Abre tu navegador y navega a http://localhost:4200 para ver la aplicación en acción. El backend de la aplicación estará disponible en la dirección http://localhost:5196/
 
-### Estructura del Proyecto
+## Estructura del Proyecto
 
 - AngularCrud/: Contiene el proyecto .NET Core
 - AngularCrud/ClientApp/: Contiene el proyecto Angular
@@ -70,7 +71,7 @@ cd Asesorias-IUPB
 - AngularCrud/Models/: Contiene los modelos de datos
 - AngularCrud/Services/: Contiene los servicios para el acceso a datos usando Dapper
 
-  ### Contribución
+  ## Contribución
   
   1. Haz un fork del proyecto.
   2. Crea una rama para tu nueva característica (git checkout -b feature/nueva-caracteristica).
@@ -78,7 +79,7 @@ cd Asesorias-IUPB
   4. Envía tus cambios al repositorio remoto (git push origin feature/nueva-caracteristica).
   5. Abre un Pull Request.
 
-###Contacto
+## Contacto
 - **Autor:** Daniel Diaz
 - **Email:** jdanieldiax@gmail.com || jose.diaz773@pascualbravo.edu.co
 - **GitHub:** DanielDiax
