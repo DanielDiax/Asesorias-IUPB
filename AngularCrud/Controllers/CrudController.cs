@@ -78,5 +78,33 @@ namespace AngularCrud.Controllers
                 return BadRequest();
             }
         }
+
+        [HttpGet("[action]/{idEstudiante}")]
+        public IActionResult ConsultarCitas(int idEstudiante)
+        {
+            try
+            {
+                var response = crudServices.ConsultarCitas(idEstudiante);
+                return Ok(response);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpGet("[action]/{idCita}")]
+        public IActionResult EliminarCita(int idCita)
+        {
+            try
+            {
+                var response = crudServices.EliminarCita(idCita);
+                return Ok(response);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
     }
 }

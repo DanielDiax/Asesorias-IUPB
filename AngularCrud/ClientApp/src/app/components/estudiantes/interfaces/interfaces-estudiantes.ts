@@ -7,3 +7,13 @@ export interface IAsesoriasDisponibles {
   apellido: string;
   asesoria: string;
 }
+
+export interface IDatosCitasEstudianteModel {
+  idCita: number;
+  fechaAsesoria: Date;
+  horaInicio: string;
+  horaFin: string;
+  nombreDocente: string;
+  apellidoDocente: string;
+  asignatura: string;
+}

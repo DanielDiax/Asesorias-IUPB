@@ -88,5 +88,41 @@ namespace AngularCrud.Services
 
             return response;
         }
+
+        /// <summary>
+        /// Consulta las asesorias en las que el estudiante se a inscrito
+        /// </summary>
+        /// <param name="idEstudiante"></param>
+        /// <returns></returns>
+        public List<DatosCitasEstudianteModelView> ConsultarCitas(int idEstudiante)
+        {
+            var parameter = new DynamicParameters();
+            parameter.Add("@Accion", "ConsultarCitas");
+            parameter.Add("@IdEstudiante", idEstudiante);
+
+            var response = _localServer.GetAll<DatosCitasEstudianteModelView>($"Sp_AsesoriasPascualBravo", parameter, commandType: CommandType.StoredProcedure);
+
+            return response;
+        }
+
+        public string EliminarCita(int idCita)
+        {
+            try
+            {
+                var parameter = new DynamicParameters();
+                parameter.Add("@Accion", "EliminarCita");
+                parameter.Add("@IdCita", idCita);
+
+                var response = _localServer.Get<string>($"Sp_AsesoriasPascualBravo", parameter, commandType: CommandType.StoredProcedure);
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+
+                return $"Error al eliminar la cita: {ex}";
+            }
+            
+        }
     }
 }

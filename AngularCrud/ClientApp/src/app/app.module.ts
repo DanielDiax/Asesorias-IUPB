@@ -25,6 +25,7 @@ import { ToggleButtonModule } from 'primeng/togglebutton';
 import { PasswordModule } from 'primeng/password';
 import { TableModule } from 'primeng/table';
 import { AgendamientosComponent } from './components/estudiantes/agendamientos/agendamientos.component';
+import { MisCitasComponent } from './components/estudiantes/misCitas/mis-citas.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { AgendamientosComponent } from './components/estudiantes/agendamientos/a
     HomeEstudiantesComponent,
     SideBarComponent,
     AgendamientosComponent,
+    MisCitasComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -56,6 +58,7 @@ import { AgendamientosComponent } from './components/estudiantes/agendamientos/a
       { path: 'registro', component: RegistroComponent },
       { path: 'estudiantes/home', component: HomeEstudiantesComponent },
       { path: 'estudiantes/agendamientos', component: AgendamientosComponent },
+      { path: 'estudiantes/mis-citas', component: MisCitasComponent },
     ]),
   ],
   providers: [],

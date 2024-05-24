@@ -1,0 +1,104 @@
+<div class="container">
+  <br />
+  <p-card header="Mis citas" subheader="{{ nombreEstudiante }}">
+    <div class="col-12">
+      <p-table
+        [value]="datosCitas"
+        responsiveLayout="stack"
+        [breakpoint]="'960px'"
+        styleClass="p-datatable-sm text-sm p-datatable-striped"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th class="hidden">IdAsesoria</th>
+            <th class="text-left">Fecha</th>
+            <th class="">Hora Inicio</th>
+            <th class="">Hora Fin</th>
+            <th class="">Nombre Docente</th>
+            <th class="">Apellido Docente</th>
+            <th class="">Asignatura</th>
+            <th class="text-center">Eliminar</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-asesoria>
+          <tr [pSelectableRow]="asesoria">
+            <td class="hidden">{{ asesoria.idCita }}</td>
+            <td class="text-left">
+              <span class="p-column-title">Fecha Asesoria</span
+              >{{ asesoria.fechaAsesoria | date : "dd/MM/yyyy" }}
+            </td>
+            <td>
+              <span class="p-column-title">Hora Inicio</span>
+              {{ asesoria.horaInicio }}
+            </td>
+            <td>
+              <span class="p-column-title">Hora Fin</span>
+              {{ asesoria.horaFin }}
+            </td>
+            <td>
+              <span class="p-column-title">Nombre Docente</span>
+              {{ asesoria.nombreDocente }}
+            </td>
+            <td>
+              <span class="p-column-title">Apellido Docente</span>
+              {{ asesoria.apellidoDocente }}
+            </td>
+            <td>
+              <span class="p-column-title">Asignatura</span>
+              {{ asesoria.asignatura }}
+            </td>
+            <td class="text-center">
+              <button
+                pButton
+                pRipple
+                type="button"
+                (click)="preguntarEliminacion(asesoria.idCita)"
+                icon="true-icon pi pi-trash text-pink-500"
+                class="p-button-sm p-button-text align-items-center justify-content-center"
+              ></button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </p-card>
+</div>
+
+<p-toast></p-toast>
+
+<p-toast
+  position="center"
+  key="p"
+  [breakpoints]="{ '920px': { width: '100%', right: '0', left: '0' } }"
+  [baseZIndex]="5000"
+>
+  <ng-template let-message pTemplate="message">
+    <div class="flex flex-column" style="flex: 1">
+      <div class="text-center">
+        <i class="pi pi-exclamation-triangle" style="font-size: 3rem"></i>
+        <h4>{{ message.summary }}</h4>
+        <p>{{ message.detail }}</p>
+      </div>
+      <div class="grid p-fluid">
+        <div class="col-6">
+          <button
+            type="button"
+            pButton
+            label="Sí"
+            (click)="eliminarCita(1)"
+            class="p-button-success"
+          ></button>
+        </div>
+        <div class="col-6">
+          <button
+            type="button"
+            pButton
+            label="No"
+            (click)="eliminarCita(0)"
+            class="p-button-warning"
+          ></button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</p-toast>

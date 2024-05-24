@@ -26,7 +26,6 @@ export class AgendamientosComponent implements OnInit {
 
   constructor(
     private localStorageService: LocalStorageService,
-    private serviciosEstuduante: EstudiantesService,
     private estudiantesService: EstudiantesService,
     private messageService: MessageService
   ) {}
@@ -73,7 +72,7 @@ export class AgendamientosComponent implements OnInit {
   async consultarAsesoriasDisponibles() {
     try {
       const respuesta: IAsesoriasDisponibles[] = await firstValueFrom(
-        this.serviciosEstuduante.asesoriasDisponibles()
+        this.estudiantesService.asesoriasDisponibles()
       );
 
       if (respuesta.length > 0) {

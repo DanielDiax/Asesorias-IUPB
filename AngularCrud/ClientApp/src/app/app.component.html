@@ -1,6 +1,6 @@
 <body>
   <app-nav-menu *ngIf="usuarioLogueado"></app-nav-menu>
   <main>
-    <router-outlet></router-outlet>
+    <router-outlet *ngIf="!usuarioLogueado"></router-outlet>
   </main>
 </body>
